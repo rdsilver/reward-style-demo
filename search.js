@@ -52,16 +52,23 @@ function productSearch() {
 }
 
 function displayProducts() {
-  for(var i=0;i<products.length;i++) {
-    var productName = products[i].product_name;
-    var productPrice = products[i].price;
-    var productImage = products[i].product_image;
+  if(products.length > 0) {
+    for(var i=0;i<products.length;i++) {
+      var productName = products[i].product_name;
+      var productPrice = products[i].price;
+      var productImage = products[i].product_image;
 
+      $('body').append(
+        "<div class='product'>" +
+          "<img class='product_image' src="+productImage+">" +
+          "<div><p>$"+productPrice+" "+productName+"</p></div>" +
+        "</div>"
+        );
+    }
+  }
+  else {
     $('body').append(
-      "<div class='product'>" +
-        "<img class='product_image' src="+productImage+">" +
-        "<div><p>$"+productPrice+" "+productName+"</p></div>" +
-      "</div>"
-      );
+      "<div class='product'>No products found :(</div>"
+    );
   }
 }
